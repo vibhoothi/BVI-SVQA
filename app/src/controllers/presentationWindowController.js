@@ -50,10 +50,10 @@ const originalTrainingVideos =
   experimentConfiguration['Original Training Videos']?.map((video) =>
     video.split('.')[0].concat(videoFormat),
   ) || [];
+// We are not converting, so no extension hacks!
 const distortedVideos =
-  experimentConfiguration['Distorted Videos']?.map((video) =>
-    video.split('.')[0].concat(videoFormat),
-  ) || [];
+  experimentConfiguration['Distorted Videos'] || [];
+console.log(distortedVideos);
 const originalVideos =
   experimentConfiguration['Original Videos']?.map((video) =>
     video.split('.')[0].concat(videoFormat),
@@ -63,7 +63,7 @@ const experiment = new SubjectiveExperiment(
   subjectiveExperiments[presentationMethod],
   scoringMethod,
 );
-const player = new Player('mpv', trial);
+const player = new Player('ffmpeg-bm', trial);
 const {
   scoringData,
   presentationOrder,

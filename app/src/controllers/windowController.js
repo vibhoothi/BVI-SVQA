@@ -31,7 +31,7 @@ exports.open = (windowName) => {
       win.flashFrame(true);
     } else win = null;
   });
-  win.loadURL(`file://${appPath}/src/windows/${windowName}.html`);
+  win.loadURL(`file://${appPath}/windows/${windowName}.html`);
   win.once('ready-to-show', () => {
     win.show();
   });
@@ -45,7 +45,7 @@ exports.mainWindow = () => {
   win.on('close', () => {
     win = null;
   });
-  win.loadURL(`file://${appPath}/src/windows/mainWindow.html`);
+  win.loadURL(`file://${appPath}/windows/mainWindow.html`);
   win.once('ready-to-show', () => {
     win.show();
   });
@@ -61,7 +61,7 @@ exports.resWindow = () => {
   win.on('close', () => {
     win = null;
   });
-  win.loadURL(`file://${appPath}/src/windows/dataAnalysisWindow.html`);
+  win.loadURL(`file://${appPath}/windows/dataAnalysisWindow.html`);
   win.once('ready-to-show', () => {
     win.show();
   });
@@ -77,7 +77,7 @@ exports.popUp = () => {
   win.on('close', () => {
     win = null;
   });
-  win.loadURL(`file://${appPath}/src/windows/selectConfigurationWindow.html`);
+  win.loadURL(`file://${appPath}/windows/selectConfigurationWindow.html`);
   win.once('ready-to-show', () => {
     win.show();
   });
@@ -98,7 +98,7 @@ exports.presWindow = () => {
   win.on('close', () => {
     win = null;
   });
-  win.loadURL(`file://${appPath}/src/windows/presentationWindow.html`);
+  win.loadURL(`file://${appPath}/windows/presentationWindow.html`);
   win.once('ready-to-show', () => {
     // win.setAlwaysOnTop(true, 'screen-saver', '1');
     win.show();

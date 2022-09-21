@@ -64,7 +64,8 @@ presentationMethods.forEach((method) => {
 browseDistortedVideos.onchange = (e) => {
   // eslint-disable-next-line no-restricted-syntax
   for (const file of e.target.files) {
-    if (!file.name.includes('.yuv')) {
+    // Make Y4M to make life easy:)
+    if (!file.name.includes('.y4m')) {
       swal.fire(videoFormatMessage);
       browseDistortedVideos.files = resetBrowseFiles();
       break;
@@ -72,11 +73,13 @@ browseDistortedVideos.onchange = (e) => {
       swal.fire(missplacedOriginalVideoMessage);
       browseDistortedVideos.files = resetBrowseFiles();
       break;
-    } else if (file.name.split('_').length < 8) {
-      swal.fire(distortedFilenameInstructionsMessage);
-      browseDistortedVideos.files = resetBrowseFiles();
-      break;
     }
+    // TODO: Fix Name Handler
+    //else if (file.name.split('_').length < 8) {
+      //swal.fire(distortedFilenameInstructionsMessage);
+      //browseDistortedVideos.files = resetBrowseFiles();
+      //break;
+    //}
   }
   const selectedFiles = e.target.files;
   if (selectedFiles.length > 0) {
@@ -107,7 +110,8 @@ browseDistortedVideos.onchange = (e) => {
 browseOriginalVideos.onchange = (e) => {
   // eslint-disable-next-line no-restricted-syntax
   for (const file of e.target.files) {
-    if (!file.name.includes('.yuv')) {
+    // Make Y4M to make life easy:)
+    if (!file.name.includes('.y4m')) {
       swal.fire(videoFormatMessage);
       browseOriginalVideos.files = resetBrowseFiles();
       break;

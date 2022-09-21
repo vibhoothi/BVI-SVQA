@@ -25,7 +25,7 @@ const mainWindow = () => {
   win.on('close', () => {
     win = null;
   });
-  win.loadURL(`file://${appPath}/src/windows/mainWindow.html`);
+  win.loadURL(`file://${appPath}/windows/mainWindow.html`);
   win.once('ready-to-show', () => {
     if (fs.existsSync(`${appPath}/../last_requirements_check`)) {
       const readDateFile = fs.readFileSync(

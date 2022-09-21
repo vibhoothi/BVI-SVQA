@@ -13,11 +13,11 @@ const {
   selectOriginalVideosMessage,
 } = require('../utils/alert/alertMessages');
 const { toCsv } = require('../utils/commonUtils');
-const { convert } = require('../utils/window/createExperimentUtils');
+//const { convert } = require('../utils/window/createExperimentUtils');
 
 const { app } = remote;
 const appPath = app.getAppPath();
-const defaultVideoFormat = '.mov';
+const defaultVideoFormat = '.y4m';
 const defaultVideoCodec = 'prores_ks';
 
 exports.prepareExperimentForm = async () => {
@@ -107,6 +107,8 @@ exports.prepareExperimentForm = async () => {
     });
 
     if (result.isConfirmed) {
+      // Disable Conversion
+      /*
       convert(
         experimentName,
         path.dirname(distortedVideoFiles[0].path),
@@ -116,7 +118,7 @@ exports.prepareExperimentForm = async () => {
         selectedCodec,
         selectedFormat,
         objectiveMetricsCheckBox.checked,
-      );
+      );*/
       fs.mkdirSync(`${appPath}/../Experiments/${experimentName}`);
       fs.writeFileSync(
         `${appPath}/../Experiments/${experimentName}/${experimentName}(config).csv`,

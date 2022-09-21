@@ -32,6 +32,7 @@ const testVmaf = () => {
   return true;
 };
 
+// TODO: Rewrite the test to check Blackmagic API versions
 const testFFmpeg = () => {
   if (process.platform === 'win32') {
     return fs.existsSync(`${appPath}/externalUtils/ffmpeg/bin/ffmpeg.exe`);
@@ -79,11 +80,13 @@ const testPythonRequirements = () => {
 
 module.exports = (win, app) => {
   let title = '';
-  if (testPythonRequirements()) {
+  if (!testPythonRequirements()) {
     title = 'Python or its requirements have not been properly installed!';
-  } else if (!testVmaf()) {
+  // Invert the VMAF test as we do not care VMAF now.
+  } else if (testVmaf()) {
     title = 'VMAF cannot be found or has not been properly built!';
-  } else if (!testFFmpeg()) {
+  // Disable FFmpeg checks, for now
+  } else if (testFFmpeg()) {
     title = 'FFMPEG cannot be found or has not been properly installed!';
   } else {
     win.show();

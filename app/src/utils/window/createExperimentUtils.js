@@ -146,8 +146,8 @@ exports.checkSelectedVideos = (distortedVideos, originalVideos) => {
       trainingDistortedVideos.push(video);
       return false;
     })
+    // Disable sortByCodec
     .sort()
-    .sort(sortByCodec)
     .sort(sortByName);
   const experimentOriginalVideos = originalVideos
     .filter((video) => {
@@ -158,7 +158,8 @@ exports.checkSelectedVideos = (distortedVideos, originalVideos) => {
     })
     .sort();
   trainingOriginalVideos.sort();
-  trainingDistortedVideos.sort().sort(sortByCodec).sort(sortByName);
+// Disable sortByCodec
+  trainingDistortedVideos.sort().sort(sortByName);
   const trainingVideosTest = countDistortions(
     trainingDistortedVideos,
     trainingOriginalVideos,

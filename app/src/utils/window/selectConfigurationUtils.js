@@ -10,6 +10,7 @@ const appPath = app.getAppPath();
 
 exports.checkConvertedFiles = (experimentName) => {
   const test = { regular: false, training: false };
+  /*
   const convertedVideos = fs.readdirSync(`${appPath}/../converted/`).sort();
   const convertedTrainingVideos = fs
     .readdirSync(`${appPath}/../trainingSequences/`)
@@ -51,7 +52,10 @@ exports.checkConvertedFiles = (experimentName) => {
       } else test.training = false;
     }
     if (test.training !== true) break;
-  }
+  }*/
+  // Presume that Conversion is true here.
+  test.training = true;
+  test.regular = true;
 
   return test;
 };

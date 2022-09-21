@@ -8,6 +8,7 @@ const remote = require('@electron/remote');
 const { delay } = require('../utils/window/presentationWindowUtils');
 const { mpvData } = require('../staticData/playersData');
 const killProcessByName = require('../utils/killProcessByName');
+const FFmpegBM = require('./FFplay');
 
 const { app } = remote;
 const appPath = app.getAppPath();
@@ -29,6 +30,8 @@ class Player {
       );
     } else if (player === 'ffplay') {
       this.#player = new FFplay();
+    } else if (player === 'ffmpeg-bm') {
+      this.#player = new FFmpegBM()
     } else {
       throw new Error('Player not supported');
     }

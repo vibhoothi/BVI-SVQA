@@ -32,4 +32,8 @@ module.exports = {
         ? `${appPath}/../externalUtils/ffmpeg/bin/ffplay`
         : 'ffplay',
   },
+  // Insert new Black-magic based ffmpeg
+  ffmpegbmData: {
+    path: `/usr/bin/ffmpeg`
+  }
 };
