@@ -96,24 +96,26 @@ const countDistortions = (distortedVideos, originalVideos) => {
     let distortionsCounter = 0;
     minRecommendedDistortionsCounter = 0;
     while (distortedVideos.length > 0) {
+      codec = 'av1';
       // eslint-disable-next-line prefer-destructuring
-      if (codec === '') codec = distortedVideos[0].split('_')[7];
+     // if (codec === '') codec = distortedVideos[0].split('_')[7];
       if (originalVideos[0].includes(distortedVideos[0].split('_')[0])) {
-        if (codec !== distortedVideos[0].split('_')[7]) {
+        //if (codec !== distortedVideos[0].split('_')[7]) {
           // eslint-disable-next-line prefer-destructuring
-          codec = distortedVideos[0].split('_')[7];
+          //codec = distortedVideos[0].split('_')[7];
+          codec = 'av1';
           if (distortionsCounter < 4) {
             minRecommendedDistortionsCounter += 1;
+            console.debug(minRecommendedDistortionsCounter);
             videoSetup.error = true;
             videoSetup.videos = {
               ...videoSetup.videos,
               [originalVideos[0]]: minRecommendedDistortionsCounter,
             };
           }
-          distortionsCounter = 1;
-        } else {
+        //} else {
           distortionsCounter += 1;
-        }
+       // }
         distortedVideos.splice(0, 1);
       } else break;
     }
@@ -186,7 +188,8 @@ exports.checkSelectedVideos = (distortedVideos, originalVideos) => {
   }
   if (experimentVideosTest.error) {
     if (experimentVideosTest.mismatch) {
-      swal.fire(regularVideosMismatchMessage);
+
+      swal.fire(regularVideosMismatchMessage, experimentVideosTest.videos);
       return false;
     }
     swal.fire({

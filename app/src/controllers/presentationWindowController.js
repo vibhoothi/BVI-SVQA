@@ -43,9 +43,7 @@ const presentationMethod =
   experimentConfiguration['Presentation method'].trim();
 const scoringMethod = experimentConfiguration['Scoring method'].trim();
 const distortedTrainingVideos =
-  experimentConfiguration['Distorted Training Videos']?.map((video) =>
-    video.split('.')[0].concat(videoFormat),
-  ) || [];
+  experimentConfiguration['Distorted Training Videos'] || [];
 const originalTrainingVideos =
   experimentConfiguration['Original Training Videos']?.map((video) =>
     video.split('.')[0].concat(videoFormat),
@@ -53,8 +51,7 @@ const originalTrainingVideos =
 // We are not converting, so no extension hacks!
 const distortedVideos =
   experimentConfiguration['Distorted Videos'] || [];
-console.log(distortedVideos);
-const originalVideos =
+  const originalVideos =
   experimentConfiguration['Original Videos']?.map((video) =>
     video.split('.')[0].concat(videoFormat),
   ) || [];
@@ -123,6 +120,7 @@ let presentationPairNumber = 0;
 let score = [];
 let finished = false;
 let videoToPlay = '';
+console.debug("At the start",presentationPair);
 (async () => {
   try {
     await player.init();
@@ -238,15 +236,19 @@ continueButton.onclick = async () => {
       presentationPair,
     );
     t = await test.next();
+    console.debug("Otusdei while",presentationPair);
     while (t.value.includes('VIDEO')) {
       if (isPairedPresentation) {
+        console.debug("At the start", presentationPair, presentationPairNumber)
         videoToPlay = presentationPair[presentationPairNumber];
         presentationPairNumber += 1;
         presentationPairNumber =
           presentationPairNumber > 1 ? 0 : presentationPairNumber;
+        console.debug("At the end", presentationPair, presentationPairNumber)
       } else {
         videoToPlay = experimentVideos[videoNum - 1];
       }
+      console.debug("Video to play", videoToPlay);
       await player.play(videoToPlay);
       t = await test.next();
     }

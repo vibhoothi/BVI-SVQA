@@ -28,7 +28,7 @@ module.exports = FFplay;
 class FFmpegBM {
   #opts;
   #playerPath;
-  constructor(opts = [" -f decklink -pix_fmt uyvy422 -r 30 -s 3840x2160 -an 'DeckLink 8K Pro (1)'"]) {
+  constructor(opts = [" -f decklink -pix_fmt uyvy422 -r 30 -s 3840x2160 -an 'DeckLink 8K Pro (1)' -loglevel quiet"]) {
     this.#opts = opts;
     this.#playerPath = ffmpegbmData.path;
   }
@@ -38,13 +38,14 @@ class FFmpegBM {
 
   load(file) {
     var ffmpegCmd = this.#playerPath + ' -i ' + file + this.#opts;
+    console.debug(ffmpegCmd)
     var spawnHandler = spawnSync(ffmpegCmd, {
       shell: true,
-      stdio: ['pipe', 'pipe', 'pipe'],
+      stdio: [process.stdin, process.stdout, process.stderr],
     });
-    if (spwan_test.stderr) {
+    if (spawnHandler.stderr) {
       console.log("Command:", ffmpegCmd);
-      console.log("Error", spawnHandler.stderr);
+      console.log("Error", spawnHandler.stderr, spawnHandler.status, spawnHandler.stdout);
     }
   }
 

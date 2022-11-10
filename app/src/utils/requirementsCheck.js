@@ -86,7 +86,7 @@ module.exports = (win, app) => {
   } else if (testVmaf()) {
     title = 'VMAF cannot be found or has not been properly built!';
   // Disable FFmpeg checks, for now
-  } else if (testFFmpeg()) {
+  } else if (!testFFmpeg()) {
     title = 'FFMPEG cannot be found or has not been properly installed!';
   } else {
     win.show();

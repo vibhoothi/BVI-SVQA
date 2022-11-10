@@ -34,6 +34,6 @@ module.exports = {
   },
   // Insert new Black-magic based ffmpeg
   ffmpegbmData: {
-    path: `/usr/bin/ffmpeg`
+    path: `/usr/local/bin/ffmpeg`
   }
 };

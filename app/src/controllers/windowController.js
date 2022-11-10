@@ -77,6 +77,7 @@ exports.popUp = () => {
   win.on('close', () => {
     win = null;
   });
+  //  win.loadURL(`file://${appPath}/src/windows/selectConfigurationWindow.html`);
   win.loadURL(`file://${appPath}/windows/selectConfigurationWindow.html`);
   win.once('ready-to-show', () => {
     win.show();
@@ -98,6 +99,7 @@ exports.presWindow = () => {
   win.on('close', () => {
     win = null;
   });
+//  win.loadURL(`file://${appPath}/src/windows/presentationWindow.html`);
   win.loadURL(`file://${appPath}/windows/presentationWindow.html`);
   win.once('ready-to-show', () => {
     // win.setAlwaysOnTop(true, 'screen-saver', '1');

@@ -65,7 +65,7 @@ browseDistortedVideos.onchange = (e) => {
   // eslint-disable-next-line no-restricted-syntax
   for (const file of e.target.files) {
     // Make Y4M to make life easy:)
-    if (!file.name.includes('.y4m')) {
+    if (!(file.name.includes('.y4m') || file.name.includes('.mp4'))) {
       swal.fire(videoFormatMessage);
       browseDistortedVideos.files = resetBrowseFiles();
       break;
@@ -111,7 +111,7 @@ browseOriginalVideos.onchange = (e) => {
   // eslint-disable-next-line no-restricted-syntax
   for (const file of e.target.files) {
     // Make Y4M to make life easy:)
-    if (!file.name.includes('.y4m')) {
+    if (!(file.name.includes('.y4m') ||file.name.includes('.mp4'))) {
       swal.fire(videoFormatMessage);
       browseOriginalVideos.files = resetBrowseFiles();
       break;
@@ -119,11 +119,13 @@ browseOriginalVideos.onchange = (e) => {
       swal.fire(missplacedDistortedVideoMessage);
       browseOriginalVideos.files = resetBrowseFiles();
       break;
-    } else if (file.name.split('_').length < 7) {
+    } 
+    /*else if (file.name.split('_').length < 9) {
+      console.log(file.name.split('_').lengt)
       swal.fire(originalFilenameInstructionsMessage);
       browseOriginalVideos.files = resetBrowseFiles();
       break;
-    }
+    }*/
   }
 
   const selectedFiles = e.target.files;
