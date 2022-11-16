@@ -22,6 +22,7 @@ const mainWindow = () => {
     ...defaultWindowOptions,
     icon: appIcon,
   });
+  win.maximize();
   win.on('close', () => {
     win = null;
   });

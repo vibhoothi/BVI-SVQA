@@ -1,6 +1,6 @@
 exports.defaultWindowOptions = {
-  width: 500,
-  height: 500,
+  width: 1920,
+  height: 1080,
   frame: false,
   resizable: false,
   maximizable: false,

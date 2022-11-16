@@ -19,10 +19,11 @@ ipcMain.on('info', (event, args) => {
 exports.open = (windowName) => {
   let win = new BrowserWindow({
     ...defaultWindowOptions,
-    width: 350,
-    height: 500,
+    width: 1920,
+    height: 1080,
     icon: appIcon,
   });
+  win.maximize();
   win.on('close', (e) => {
     if (stopClose) {
       e.preventDefault();
@@ -42,6 +43,7 @@ exports.mainWindow = () => {
     ...defaultWindowOptions,
     icon: appIcon,
   });
+  win.maximize();
   win.on('close', () => {
     win = null;
   });
@@ -54,10 +56,11 @@ exports.mainWindow = () => {
 exports.resWindow = () => {
   let win = new BrowserWindow({
     ...defaultWindowOptions,
-    width: 350,
-    height: 600,
+    width: 1920,
+    height: 1080,
     icon: appIcon,
   });
+  win.maximize();
   win.on('close', () => {
     win = null;
   });
@@ -70,10 +73,11 @@ exports.resWindow = () => {
 exports.popUp = () => {
   let win = new BrowserWindow({
     ...defaultWindowOptions,
-    width: 350,
-    height: 380,
+    width: 1920,
+    height: 1080,
     icon: appIcon,
   });
+  win.maximize();
   win.on('close', () => {
     win = null;
   });
@@ -96,6 +100,7 @@ exports.presWindow = () => {
     },
     icon: appIcon,
   });
+  win.maximize();
   win.on('close', () => {
     win = null;
   });
