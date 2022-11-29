@@ -82,15 +82,15 @@ document.getElementById('confirmExtractData').onclick = () => {
   const presentationMethod = experimentConfiguration['Presentation method'];
   if (document.querySelector('input[name="export"]:checked').value === 'raw') {
     const pyshell = new PythonShell(
-      `${appPath}/src/utils/python/extractData.py`,
+      `${appPath}/utils/python/extractData.py`,
       {
         args: [selectedExperiment, presentationMethod],
       },
     );
 
-    /* pyshell.on('message', function (message) {
-      console.log(message);
-    }); */
+     pyshell.on('message', function (message) {
+      console.log(message,selectedExperiment,presentationMethod);
+    });
 
     pyshell.end((err) => {
       if (err) {

@@ -45,7 +45,7 @@ class Player {
     await this.#player.load(path.join(this.#videosPath, filename));
     if (this.#playerName === 'mpv') {
       const duration = await this.#player.getDuration();
-      await delay(duration * 1000);
+      await delay(duration * 2);
     }
   }
 

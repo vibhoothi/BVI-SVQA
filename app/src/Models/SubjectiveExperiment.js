@@ -195,14 +195,14 @@ class SubjectiveExperiment {
 
   async *start(current, last, replay = false, presentationPair) {
     if (current === 1 && replay === false) {
-      await delay(2000);
+      await delay(0.001);
     }
     if (replay === false) {
       this.#resetScoring();
     }
     if (this.#pairedPresentation) {
       this.showStartingVideoPair(current, last);
-      await delay(2000);
+      await delay(0.001);
     }
     let playingVideoNum = 0;
     // eslint-disable-next-line no-restricted-syntax
@@ -254,7 +254,7 @@ class SubjectiveExperiment {
         mainContent.style.display = 'none';
         this.showStartingVideo(current, last); // check this was experiment.showStartingVideo(current, last)
         // eslint-disable-next-line no-await-in-loop
-        await delay(2000);
+        await delay(0.001);
         yield currentSchedule;
         playingVideoNum += 1;
         playingVideoNum =
@@ -285,14 +285,17 @@ class SubjectiveExperiment {
   }
 
   showStartingVideoPair(current, last) {
+    document.body.style.background = 'black';
     document.getElementById('titleText').style.display = '';
     document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('titleText').style.color ='gray';
     document.getElementById('titleText').innerText = `${
       this.#startingVideoLabels[0]
     } ${current} of ${last}`;
   }
 
   showStartingVideo(current, last) {
+    document.getElementById('ratingInputsContainer').style.color = 'gray';
     document.getElementById('ratingInputsContainer').style.display = '';
     if (this.#pairedPresentation === false) {
       document.getElementById('titleText').innerText = `${

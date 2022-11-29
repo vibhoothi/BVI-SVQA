@@ -5,8 +5,7 @@ import numpy as np
 import scipy.stats as st
 
 cwd = os.getcwd()
-experimentsPath = cwd + '/../Experiments/'
-
+experimentsPath = cwd + '/Experiments/'
 experimentName = sys.argv[1]
 presentationMethod = sys.argv[2]
 if (presentationMethod == "ACR(discrete)" or presentationMethod == "ACR(continuous)"):
@@ -17,6 +16,8 @@ else:
     nameIndex = 2
 
 dir_path = os.path.dirname(experimentsPath + experimentName + '/')
+print("PATH", dir_path)
+
 allScores = []
 full = 0.00
 finalS = []
